@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Bubble Sort</h1>
+    <div id="output"></div>
+    
+    <script>
+        // Simple bubble sort demo with pass-by-pass output
+        let arr = [1, 4, 6, 7, 3, 7, 8, 3, 10];
+        const n = arr.length;
+
+        const out = document.getElementById('output');
+        out.innerHTML = '<strong>Original:</strong> ' + arr.join(', ') + '<br>';
+
+        // Perform bubble sort, printing the array after each outer pass
+        for (let i = 0; i < n - 1; i++) {
+            let swapped = false;
+            for (let j = 0; j < n - 1 - i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    // swap
+                    const tmp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = tmp;
+                    swapped = true;
+                }
+            }
+            out.innerHTML += 'After pass ' + (i + 1) + ': ' + arr.join(', ') + '<br>';
+            // If no swaps occurred, the array is sorted -> early exit
+            if (!swapped) break;
+        }
+
+        out.innerHTML += '<strong>Sorted:</strong> ' + arr.join(', ');
+    </script>
+</body>
+</html>
